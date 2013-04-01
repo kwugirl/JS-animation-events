@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8" />
+  <title>Cat Walk</title>
+ </head>
+ <body>
+  
+  <img style="position:absolute;" src="cat-walk.gif">
+  
+ </body>
+</html>
+
+<script>
+
+var imgTag = document.getElementsByTagName("img");
+imgTag[0].style.left = "0px";
+
+var direction = "forward";
+
+var halfWindow = Math.round((window.innerWidth)/2 - (imgTag[0].width)/2);
+
+var walkingTimer = window.setInterval(catWalk, 5);
+
+function catWalk() {
+	var currentLeft = parseInt(imgTag[0].style.left);
+	
+	if (currentLeft == halfWindow) {
+		imgTag[0].src = "cat_with_bowl.gif";
+		window.clearInterval(walkingTimer);
+		window.setTimeout(reset, 1000); // holds on to bowl img for this amount of time
+		console.log("hi!");
+		window.setTimeout(timer, 1000); // resets 
+	}
+	
+	if (currentLeft == 0) {
+		direction = "forward";
+	}
+
+	if (currentLeft > (window.innerWidth-imgTag[0].width)) {
+		//imgTag[0].style.left = "0px";	//makes the cat loop around to the left again
+		direction = "backward";
+	}
+
+	if (direction == "forward") {
+		imgTag[0].style.left = currentLeft + 1 + 'px';
+	}
+	
+	else {
+		imgTag[0].style.left = currentLeft - 1 + 'px';
+	}
+	
+}
+
+function reset() {
+	imgTag[0].src = "cat-walk.gif";
+}
+
+function timer() {
+	walkingTimer = window.setInterval(catWalk, 5);
+}
+
+</script>

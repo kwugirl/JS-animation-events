@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <title>About Me</title>
+
+<style type="text/css">
+.listitem {
+	color: red;
+}
+</style>
+  
+</head>
+<body>
+  <h1>About Me</h1>
+  
+  <ul>
+    <li>Name: <span id="name"></span>
+    <li>Age:  <span id="age"></span>
+    <li>Hometown: <span id="hometown"></span>
+   </ul>
+  
+  <div id="last"></div>
+ </body>
+</html>
+
+<script>
+document.body.style.background = "#f0f0f0";
+document.body.style.fontFamily = "Arial, sans-serif";
+document.getElementById("name").textContent = "KWu";
+document.getElementById("age").textContent = "26";
+document.getElementById("hometown").textContent = "Holmdel, NJ";
+
+lis = document.getElementsByTagName("li");
+
+for (var i = 0; i < lis.length; i++) {
+   lis[i].setAttribute("class", "listitem")
+}
+
+var newImg = document.createElement("img");
+newImg.setAttribute("src", "http://assets.diylol.com/hfs/986/3f3/1ba/resized/lizard-meme-generator-hehehe-55ec47.jpg");
+
+var lastDiv = document.getElementById("last");
+
+document.body.appendChild(newImg);
+</script>
